@@ -2,7 +2,7 @@
 
 This is a Tip Calculator application for CodePath iOS Bootcamp class.
 
-Time spent: 7 hours
+Time spent: 8 hours
 
 Completed:
 
@@ -12,6 +12,7 @@ Completed:
 * [x] Optional: Dynamically caclulate the tip and total amount while user editing the bill amount.
 * [x] Optional: Allow user to choose number of people to split the bill.
 * [x] Optional: Set bill input field as the first responder.
+* [x] Optional: Allow user to save and view last bill information (including bill amount, date and location)
 
 Notes:
 

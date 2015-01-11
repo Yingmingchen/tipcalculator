@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		96146EB31A58FDEC008148F1 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96146EB11A58FDEC008148F1 /* SettingsViewController.m */; };
 		96146EB41A58FDEC008148F1 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 96146EB21A58FDEC008148F1 /* SettingsViewController.xib */; };
+		96146EB61A622AA6008148F1 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96146EB51A622AA6008148F1 /* CoreLocation.framework */; };
+		96146EBA1A6245B9008148F1 /* LastBillViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96146EB81A6245B9008148F1 /* LastBillViewController.m */; };
+		96146EBB1A6245B9008148F1 /* LastBillViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 96146EB91A6245B9008148F1 /* LastBillViewController.xib */; };
 		96F37AF01A53CA9100C72BDA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 96F37AEF1A53CA9100C72BDA /* main.m */; };
 		96F37AF31A53CA9100C72BDA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 96F37AF21A53CA9100C72BDA /* AppDelegate.m */; };
 		96F37AF61A53CA9100C72BDA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96F37AF51A53CA9100C72BDA /* ViewController.m */; };
@@ -34,6 +37,10 @@
 		96146EB01A58FDEC008148F1 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		96146EB11A58FDEC008148F1 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		96146EB21A58FDEC008148F1 /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
+		96146EB51A622AA6008148F1 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		96146EB71A6245B9008148F1 /* LastBillViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LastBillViewController.h; sourceTree = "<group>"; };
+		96146EB81A6245B9008148F1 /* LastBillViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LastBillViewController.m; sourceTree = "<group>"; };
+		96146EB91A6245B9008148F1 /* LastBillViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LastBillViewController.xib; sourceTree = "<group>"; };
 		96F37AEA1A53CA9100C72BDA /* tipcalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tipcalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		96F37AEE1A53CA9100C72BDA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		96F37AEF1A53CA9100C72BDA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -57,6 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96146EB61A622AA6008148F1 /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,6 +81,7 @@
 		96F37AE11A53CA9100C72BDA = {
 			isa = PBXGroup;
 			children = (
+				96146EB51A622AA6008148F1 /* CoreLocation.framework */,
 				96F37AEC1A53CA9100C72BDA /* tipcalculator */,
 				96F37B061A53CA9100C72BDA /* tipcalculatorTests */,
 				96F37AEB1A53CA9100C72BDA /* Products */,
@@ -101,6 +110,9 @@
 				96F37AED1A53CA9100C72BDA /* Supporting Files */,
 				96F37B131A53CD6100C72BDA /* TipViewController.h */,
 				96F37B141A53CD6100C72BDA /* TipViewController.m */,
+				96146EB71A6245B9008148F1 /* LastBillViewController.h */,
+				96146EB81A6245B9008148F1 /* LastBillViewController.m */,
+				96146EB91A6245B9008148F1 /* LastBillViewController.xib */,
 				96F37B151A53CD6100C72BDA /* TipViewController.xib */,
 				96146EB01A58FDEC008148F1 /* SettingsViewController.h */,
 				96146EB11A58FDEC008148F1 /* SettingsViewController.m */,
@@ -220,6 +232,7 @@
 				96F37B171A53CD6100C72BDA /* TipViewController.xib in Resources */,
 				96F37AFB1A53CA9100C72BDA /* Images.xcassets in Resources */,
 				96146EB41A58FDEC008148F1 /* SettingsViewController.xib in Resources */,
+				96146EBB1A6245B9008148F1 /* LastBillViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -240,6 +253,7 @@
 				96F37AF61A53CA9100C72BDA /* ViewController.m in Sources */,
 				96F37AF31A53CA9100C72BDA /* AppDelegate.m in Sources */,
 				96146EB31A58FDEC008148F1 /* SettingsViewController.m in Sources */,
+				96146EBA1A6245B9008148F1 /* LastBillViewController.m in Sources */,
 				96F37B161A53CD6100C72BDA /* TipViewController.m in Sources */,
 				96F37AF01A53CA9100C72BDA /* main.m in Sources */,
 			);

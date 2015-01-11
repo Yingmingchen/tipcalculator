@@ -8,6 +8,7 @@
 
 #import "TipViewController.h"
 #import "SettingsViewController.h"
+#import "LastBillViewController.h"
 
 @interface TipViewController ()
 
@@ -22,6 +23,8 @@
 // Event handlers
 - (IBAction)onTap:(id)sender;
 - (void)onSettingsButton;
+- (void)onLastBillsButton;
+- (IBAction)onSaveBill:(id)sender;
 
 // Helper functions
 - (void)updateValues;
@@ -29,6 +32,12 @@
 @end
 
 @implementation TipViewController
+
+CLLocationManager *locationManager;
+CLGeocoder *geocoder;
+CLPlacemark *placemark;
+NSDateFormatter *dateFormatter;
+NSString *billAddress;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self.title = @"Tip Calulator";
@@ -40,9 +49,17 @@
     
     // Set the default values
     [self updateValues];
-    
+
     // Setup navigation button for settings view
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Settings" style:UIBarButtonItemStylePlain target:self action:@selector(onSettingsButton)];
+    
+    // Setup navigation button for settings view
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Last Bill" style:UIBarButtonItemStylePlain target:self action:@selector(onLastBillsButton)];
+
+    locationManager = [[CLLocationManager alloc] init];
+    geocoder = [[CLGeocoder alloc] init];
+    billAddress = @"N/A";
+    dateFormatter = [[NSDateFormatter alloc] init];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -62,17 +79,77 @@
     self.splitControlStepper.stepValue = 1;
     
     [self updateValues];
-    
     // Put the focus on the bill input filed
     [self.billInputField becomeFirstResponder];
+
+    // Init location related stuff
+    locationManager.delegate = self;
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    [locationManager startUpdatingLocation];
+
+    // Request permission for get user location
+    [locationManager requestAlwaysAuthorization];
 }
 
 - (IBAction)onTap:(id)sender {
     [self updateValues];
 }
 
+- (IBAction)onSaveBill:(id)sender {
+    NSDate *now = [NSDate date];
+    [dateFormatter setDateFormat:@"MM/dd/yyyy HH:mm"];
+    NSString *billDate = [dateFormatter stringFromDate:now];
+
+    // Save the last bill info
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:billAddress forKey:@"last_bill_address"];
+    [defaults setObject:billDate forKey:@"last_bill_date"];
+    [defaults setObject:self.tipAmountField.text forKey:@"last_bill_tip"];
+    [defaults setObject:self.totalAmountField.text forKey:@"last_bill_total"];
+    [defaults setObject:self.perPersonAmountField.text forKey:@"last_bill_per_person"];
+    long splitCount = (long)self.splitControlStepper.value;
+    [defaults setInteger:splitCount forKey:@"last_bill_split_count"];
+
+    [defaults synchronize];
+}
+
 - (void)onSettingsButton {
     [self.navigationController pushViewController:[[SettingsViewController alloc] init] animated:YES];
+}
+
+- (void)onLastBillsButton {
+    [self.navigationController pushViewController:[[LastBillViewController alloc] init] animated:YES];
+}
+
+#pragma mark - CLLocationManagerDelegate
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
+{
+    UIAlertView *errorAlert = [[UIAlertView alloc]
+                               initWithTitle:@"Error" message:@"Failed to Get Your Location" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [errorAlert show];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
+{
+    CLLocation *currentLocation = newLocation;
+
+    if (currentLocation != nil) {
+        [geocoder reverseGeocodeLocation:currentLocation completionHandler:^(NSArray *placemarks, NSError *error) {
+            if (error == nil && [placemarks count] > 0) {
+                placemark = [placemarks lastObject];
+                // Save bill address
+                billAddress = [NSString stringWithFormat:@"%@ %@\n%@\n%@  %@\n%@",
+                                     placemark.subThoroughfare, placemark.thoroughfare,
+                                     placemark.locality,
+                                     placemark.administrativeArea, placemark.postalCode,
+                                     placemark.country];
+            } else {
+                NSLog(@"%@", error.debugDescription);
+            }
+        } ];
+    }
+
+    [locationManager stopUpdatingLocation];
 }
 
 - (void)updateValues {

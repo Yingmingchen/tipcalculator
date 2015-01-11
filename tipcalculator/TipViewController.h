@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
 
-@interface TipViewController : UIViewController
+@interface TipViewController : UIViewController <CLLocationManagerDelegate>
 
 @end
