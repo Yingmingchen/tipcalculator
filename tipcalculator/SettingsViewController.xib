@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SettingsViewController">
+            <connections>
+                <outlet property="defaultTipControl" destination="vwx-2Y-Wpd" id="kYT-SR-9Mb"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Default tip %" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yOE-jH-NJT">
+                    <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                        <rect key="frame" x="14" y="61" width="101" height="25"/>
+                    </variation>
+                </label>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="vwx-2Y-Wpd">
+                    <rect key="frame" x="-61" y="-14" width="123" height="29"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="240" id="Ul2-jd-dOP">
+                            <variation key="heightClass=regular-widthClass=compact" constant="220"/>
+                        </constraint>
+                    </constraints>
+                    <segments>
+                        <segment title="10%"/>
+                        <segment title="15%"/>
+                        <segment title="20%"/>
+                    </segments>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="Ul2-jd-dOP"/>
+                        </mask>
+                    </variation>
+                    <variation key="heightClass=regular-widthClass=compact">
+                        <mask key="constraints">
+                            <include reference="Ul2-jd-dOP"/>
+                        </mask>
+                    </variation>
+                    <connections>
+                        <action selector="onTipControl:" destination="-1" eventType="valueChanged" id="C97-0i-Si0"/>
+                    </connections>
+                </segmentedControl>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <gestureRecognizers/>
+            <constraints>
+                <constraint firstItem="vwx-2Y-Wpd" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="61" id="3he-oj-t7O">
+                    <variation key="heightClass=regular-widthClass=compact" constant="60"/>
+                </constraint>
+                <constraint firstItem="yOE-jH-NJT" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="61" id="f4A-NK-Ryd"/>
+                <constraint firstAttribute="trailing" secondItem="vwx-2Y-Wpd" secondAttribute="trailing" constant="19" id="gwp-Bt-XMr">
+                    <variation key="heightClass=regular-widthClass=compact" constant="14"/>
+                </constraint>
+                <constraint firstItem="yOE-jH-NJT" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="14" id="p54-gp-jJq"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="vwx-2Y-Wpd" secondAttribute="trailing" constant="14" id="yDq-cg-aXL"/>
+            </constraints>
+            <variation key="default">
+                <mask key="subviews">
+                    <exclude reference="yOE-jH-NJT"/>
+                    <exclude reference="vwx-2Y-Wpd"/>
+                </mask>
+                <mask key="constraints">
+                    <exclude reference="f4A-NK-Ryd"/>
+                    <exclude reference="p54-gp-jJq"/>
+                    <exclude reference="3he-oj-t7O"/>
+                    <exclude reference="gwp-Bt-XMr"/>
+                    <exclude reference="yDq-cg-aXL"/>
+                </mask>
+            </variation>
+            <variation key="heightClass=regular-widthClass=compact">
+                <mask key="subviews">
+                    <include reference="yOE-jH-NJT"/>
+                    <include reference="vwx-2Y-Wpd"/>
+                </mask>
+                <mask key="constraints">
+                    <include reference="f4A-NK-Ryd"/>
+                    <include reference="p54-gp-jJq"/>
+                    <include reference="3he-oj-t7O"/>
+                    <include reference="gwp-Bt-XMr"/>
+                    <include reference="yDq-cg-aXL"/>
+                </mask>
+            </variation>
+            <connections>
+                <outletCollection property="gestureRecognizers" destination="MLF-Zo-zLv" appends="YES" id="Ao3-Jr-Ro4"/>
+            </connections>
+        </view>
+        <tapGestureRecognizer id="MLF-Zo-zLv"/>
+    </objects>
+</document>
